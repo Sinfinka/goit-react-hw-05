@@ -3,7 +3,6 @@ import { Field, Formik, Form } from "formik";
 function SearchBar({ onSearch }) {
   return (
     <div>
-      <h2>Search</h2>
       <Formik
         initialValues={{ query: "" }}
         onSubmit={(values, actions) => {
