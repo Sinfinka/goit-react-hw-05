@@ -27,7 +27,7 @@ export default function MovieDetailsPage() {
         const data = await fetchMovieData(movieId);
         setMovie(data);
       } catch (error) {
-        setError("Oops! Something went wrong. Try reloading the page");
+        setError(true);
       } finally {
         setIsLoading(false);
       }
@@ -36,13 +36,13 @@ export default function MovieDetailsPage() {
   }, [movieId]);
 
   if (!movie) {
-    return null;
+    return;
   }
 
   return (
     <div>
-      <p> Movie Details Page {movieId}</p>
-
+      {isLoading && <Loader />}
+      {error && <ErrorMessage />}
       <div>
         <img
           src={createImgURL(movie?.poster_path)}
@@ -52,8 +52,6 @@ export default function MovieDetailsPage() {
         <p>{movie?.overview}</p>
         <p>Rating: {movie?.vote_average}</p>
         <p>Release: {movie?.release_date}</p>
-        {isLoading && <Loader />}
-        {error && <ErrorMessage />}
       </div>
 
       <nav>
