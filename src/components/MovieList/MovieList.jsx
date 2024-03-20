@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import MovieItem from "../MovieItem/MovieItem";
 
 const MovieList = ({ movies }) => {
@@ -6,7 +7,9 @@ const MovieList = ({ movies }) => {
     <ul>
       {movies.map((movie) => (
         <li key={movie.id}>
-          <MovieItem movie={movie} />
+          <Link to={`/movies/${movie.id}`}>
+            <MovieItem movie={movie} />
+          </Link>
         </li>
       ))}
     </ul>

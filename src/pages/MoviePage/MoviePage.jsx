@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import fetchData from "../../movies-api";
+import { fetchData } from "../../movies-api";
 import SearchBar from "../../components/SearchBar/Search.Bar";
 import MovieList from "../../components/MovieList/MovieList";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";

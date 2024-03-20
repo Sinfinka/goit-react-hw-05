@@ -6,7 +6,7 @@ const API_TOKEN =
 axios.defaults.baseURL = "https://api.themoviedb.org/3/";
 axios.defaults.headers["Authorization"] = "Bearer " + API_TOKEN;
 
-export default async function fetchData(newQuery, page) {
+export async function fetchData(newQuery, page) {
   const response = await axios.get("search/movie", {
     params: {
       query: newQuery,
@@ -14,6 +14,17 @@ export default async function fetchData(newQuery, page) {
       page,
     },
   });
-  console.log("response", response);
+  // console.log("response", response);
+
+  return response.data;
+}
+
+export async function fetchMovieData(movieId) {
+  const response = await axios.get(`movie/${movieId}`, {
+    params: {
+      language: "en-US",
+    },
+  });
+
   return response.data;
 }
