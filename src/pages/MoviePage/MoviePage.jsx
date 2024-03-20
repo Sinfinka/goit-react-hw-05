@@ -5,26 +5,25 @@ import MovieList from "../../components/MovieList/MovieList";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Loader from "../../components/loader/Loader";
 import Pagination from "./../../components/Pagination/Pagination";
+import { useSearchParams } from "react-router-dom";
 
 const MoviesPage = () => {
-  const [query, setQuery] = useState("");
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [page, setPage] = useState(1);
   const [pageInfo, setPageInfo] = useState({});
+  const [searchParams, setSearchParams] = useSearchParams();
+  console.log("searchParam", searchParams);
 
   useEffect(() => {
-    if (query === "") {
-      return;
-    }
-
-    async function getData() {
+    const fetchMovies = async () => {
       try {
-        setError(false);
         setLoading(true);
-        setMovies([]);
-        const data = await fetchData(query, page);
+        setError(false);
+        const query = searchParams.get("query") || "";
+        console.log("squery", query);
+        const data = await fetchData(query);
         setMovies(data.results);
         setPageInfo(data);
       } catch (error) {
@@ -32,14 +31,13 @@ const MoviesPage = () => {
       } finally {
         setLoading(false);
       }
-    }
+    };
 
-    getData();
-  }, [query, page]);
+    fetchMovies();
+  }, [searchParams]);
 
-  const handleSearch = async (newQuery) => {
-    setQuery(newQuery);
-    setPage(1);
+  const handleSearch = (values) => {
+    setSearchParams(values);
   };
 
   const handleGoNextPage = () => {
@@ -54,8 +52,8 @@ const MoviesPage = () => {
 
   return (
     <div>
-      <h1>Movie Search: </h1>
-      <h2>Find your favorite films easily and quickly </h2>
+      <h1>Movie Search:</h1>
+      <h2>Find your favorite films easily and quickly</h2>
 
       <SearchBar onSearch={handleSearch} />
       {loading && <Loader />}

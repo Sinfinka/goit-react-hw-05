@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { NavLink, Outlet, useParams } from "react-router-dom";
+import { Link, NavLink, Outlet, useParams } from "react-router-dom";
 import { fetchMovieData } from "../../movies-api";
 import { createImgURL } from "../../misc";
 import Loader from "../../components/loader/Loader";
@@ -43,6 +43,7 @@ export default function MovieDetailsPage() {
     <div>
       {isLoading && <Loader />}
       {error && <ErrorMessage />}
+      <Link to="/">Go back</Link>
       <div>
         <img
           src={createImgURL(movie?.poster_path)}

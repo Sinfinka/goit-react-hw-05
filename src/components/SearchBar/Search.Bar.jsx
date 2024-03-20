@@ -6,7 +6,9 @@ function SearchBar({ onSearch }) {
       <Formik
         initialValues={{ query: "" }}
         onSubmit={(values, actions) => {
-          onSearch(values.query);
+          onSearch(values);
+          console.log("onSearch", onSearch);
+          console.log("values", values);
           actions.resetForm();
         }}
       >
