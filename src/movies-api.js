@@ -14,7 +14,6 @@ export async function fetchData(newQuery, page) {
       page,
     },
   });
-  // console.log("response", response);
 
   return response.data;
 }
@@ -45,6 +44,13 @@ export async function fetchMovieReviews(movieId) {
       language: "en-US",
     },
   });
+
+  return response.data;
+}
+
+export async function fetchTrendData() {
+  const response = await axios.get("trending/movie/day");
+  console.log(response.data);
 
   return response.data;
 }

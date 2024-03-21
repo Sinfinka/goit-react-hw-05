@@ -3,7 +3,7 @@ import { fetchData } from "../../movies-api";
 import SearchBar from "../../components/SearchBar/Search.Bar";
 import MovieList from "../../components/MovieList/MovieList";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
-import Loader from "../../components/loader/Loader";
+import Loader from "../../components/Loader/Loader";
 import Pagination from "./../../components/Pagination/Pagination";
 import { useSearchParams } from "react-router-dom";
 
@@ -14,7 +14,6 @@ const MoviesPage = () => {
   const [page, setPage] = useState(1);
   const [pageInfo, setPageInfo] = useState({});
   const [searchParams, setSearchParams] = useSearchParams();
-  console.log("searchParam", searchParams);
 
   useEffect(() => {
     const fetchMovies = async () => {

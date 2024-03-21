@@ -1,8 +1,14 @@
-import { useEffect, useState } from "react";
-import { Link, NavLink, Outlet, useParams } from "react-router-dom";
+import { Suspense, useEffect, useRef, useState } from "react";
+import {
+  Link,
+  NavLink,
+  Outlet,
+  useLocation,
+  useParams,
+} from "react-router-dom";
 import { fetchMovieData } from "../../movies-api";
 import { createImgURL } from "../../misc";
-import Loader from "../../components/loader/Loader";
+import Loader from "../../components/Loader/Loader";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import css from "./MovieDetailsPage.module.css";
 import clsx from "clsx";
@@ -17,7 +23,8 @@ export default function MovieDetailsPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
 
-  console.log("movie by id", movie);
+  const location = useLocation();
+  const backLinkRef = useRef(location.state ?? "/");
 
   useEffect(() => {
     const getMovieById = async () => {
@@ -43,7 +50,7 @@ export default function MovieDetailsPage() {
     <div>
       {isLoading && <Loader />}
       {error && <ErrorMessage />}
-      <Link to="/">Go back</Link>
+      <Link to={backLinkRef.current}>Go back</Link>
       <div>
         <img
           src={createImgURL(movie?.poster_path)}
@@ -64,7 +71,9 @@ export default function MovieDetailsPage() {
         </NavLink>
       </nav>
 
-      <Outlet />
+      <Suspense fallback={<Loader />}>
+        <Outlet />
+      </Suspense>
     </div>
   );
 }
