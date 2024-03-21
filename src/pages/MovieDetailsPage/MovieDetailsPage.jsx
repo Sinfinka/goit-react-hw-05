@@ -8,10 +8,10 @@ import {
 } from "react-router-dom";
 import { fetchMovieData } from "../../movies-api";
 import { createImgURL } from "../../misc";
-// import Loader from "../../components/Loader/Loader";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import css from "./MovieDetailsPage.module.css";
 import clsx from "clsx";
+import Loader from "../../components/Loader/Loader";
 
 const buildLinkClass = ({ isActive }) => {
   return clsx(css.link, isActive && css.isActive);
@@ -48,7 +48,7 @@ export default function MovieDetailsPage() {
 
   return (
     <div>
-      {isLoading && "<Loader />"}
+      {isLoading && <Loader />}
       {error && <ErrorMessage />}
       <Link to={backLinkRef.current}>Go back</Link>
       <div>

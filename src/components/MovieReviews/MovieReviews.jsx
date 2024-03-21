@@ -4,7 +4,7 @@ import { fetchMovieReviews } from "../../movies-api";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 import { createImgURL } from "../../misc";
-// import Loader from "../Loader/Loader";
+import Loader from "../Loader/Loader";
 
 function MovieReviews() {
   const [reviews, setReviews] = useState([]);
@@ -32,7 +32,7 @@ function MovieReviews() {
 
   return (
     <div>
-      {isLoading && "<Loader />"}
+      {isLoading && <Loader />}
       {error && <ErrorMessage />}
 
       <ul>

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { fetchTrendData } from "./../../movies-api";
 import MovieList from "../../components/MovieList/MovieList";
-// import Loader from "../../components/Loader/Loader";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+import Loader from "../../components/Loader/Loader";
 
 const HomePage = () => {
   const [data, setData] = useState(null);
@@ -28,7 +28,7 @@ const HomePage = () => {
 
   return (
     <div>
-      {loading && "<Loader />"}
+      {loading && <Loader />}
       {error && <ErrorMessage />}
       {data && <MovieList movies={data} />}
     </div>
