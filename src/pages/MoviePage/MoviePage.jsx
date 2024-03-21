@@ -3,7 +3,7 @@ import { fetchData } from "../../movies-api";
 import SearchBar from "../../components/SearchBar/Search.Bar";
 import MovieList from "../../components/MovieList/MovieList";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
-import Loader from "../../components/Loader/Loader";
+// import Loader from "../../components/Loader/Loader";
 import Pagination from "./../../components/Pagination/Pagination";
 import { useSearchParams } from "react-router-dom";
 
@@ -55,7 +55,8 @@ const MoviesPage = () => {
       <h2>Find your favorite films easily and quickly</h2>
 
       <SearchBar onSearch={handleSearch} />
-      {loading && <Loader />}
+      {loading && " <Loader />"}
+      {/* {loading && <Loader />} */}
       {error && <ErrorMessage />}
       {movies.length > 0 && <MovieList movies={movies} />}
       {movies.length > 0 && (

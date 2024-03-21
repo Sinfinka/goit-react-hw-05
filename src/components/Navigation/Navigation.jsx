@@ -9,11 +9,6 @@ const addActiveClass = ({ isActive }) => {
 const Navigation = () => {
   return (
     <header>
-      {/* <div>
-        <Link to="/">
-          <IoIosPulse className={c.logo} size={40} />
-        </Link>
-      </div> */}
       <nav>
         <NavLink className={addActiveClass} to="/">
           Home

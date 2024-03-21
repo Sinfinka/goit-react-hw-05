@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchMovieReviews } from "../../movies-api";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
-import Loader from "../Loader/Loader";
+// import Loader from "../Loader/Loader";
 import { createImgURL } from "../../misc";
 
 function MovieReviews() {
@@ -31,7 +31,8 @@ function MovieReviews() {
 
   return (
     <div>
-      {isLoading && <Loader />}
+      {/* {isLoading && <Loader />} */}
+      {isLoading && "<Loader />"}
       {error && <ErrorMessage />}
 
       <ul>

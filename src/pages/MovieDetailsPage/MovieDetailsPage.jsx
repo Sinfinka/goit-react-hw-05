@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 import { fetchMovieData } from "../../movies-api";
 import { createImgURL } from "../../misc";
-import Loader from "../../components/Loader/Loader";
+// import Loader from "../../components/Loader/Loader";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import css from "./MovieDetailsPage.module.css";
 import clsx from "clsx";
@@ -48,7 +48,7 @@ export default function MovieDetailsPage() {
 
   return (
     <div>
-      {isLoading && <Loader />}
+      {isLoading && "<Loader />"}
       {error && <ErrorMessage />}
       <Link to={backLinkRef.current}>Go back</Link>
       <div>
@@ -71,7 +71,7 @@ export default function MovieDetailsPage() {
         </NavLink>
       </nav>
 
-      <Suspense fallback={<Loader />}>
+      <Suspense fallback={"<Loader />"}>
         <Outlet />
       </Suspense>
     </div>
