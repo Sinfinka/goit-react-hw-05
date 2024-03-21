@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { Suspense, lazy } from "react";
-import Loader from "./components/Loader/Loader";
+// import Loader from "./components/Loader/Loader";
 import Navigation from "./components/Navigation/Navigation";
 import MovieCast from "./components/MovieCast/MovieCast";
 import MovieReviews from "./components/MovieReviews/MovieReviews";
@@ -19,7 +19,7 @@ function App() {
     <>
       <Navigation />
 
-      <Suspense fallback={<Loader />}>
+      <Suspense fallback={"Loading..."}>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/movies" element={<MoviesPage />} />
