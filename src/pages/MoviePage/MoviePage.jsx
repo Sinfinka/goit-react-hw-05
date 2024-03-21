@@ -6,6 +6,7 @@ import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Pagination from "./../../components/Pagination/Pagination";
 import { useSearchParams } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
+// import css from "./MoviesPage.module.css";
 
 const MoviesPage = () => {
   const [movies, setMovies] = useState([]);
@@ -21,8 +22,7 @@ const MoviesPage = () => {
         setLoading(true);
         setError(false);
         const query = searchParams.get("query") || "";
-        console.log("squery", query);
-        const data = await fetchData(query);
+        const data = await fetchData(query, page);
         setMovies(data.results);
         setPageInfo(data);
       } catch (error) {
@@ -33,10 +33,11 @@ const MoviesPage = () => {
     };
 
     fetchMovies();
-  }, [searchParams]);
+  }, [searchParams, page]);
 
   const handleSearch = (values) => {
     setSearchParams(values);
+    setPage(1);
   };
 
   const handleGoNextPage = () => {
@@ -56,8 +57,18 @@ const MoviesPage = () => {
 
       <SearchBar onSearch={handleSearch} />
       {loading && <Loader />}
-      {/* {loading && <Loader />} */}
       {error && <ErrorMessage />}
+      {movies.length === 0 && !loading && searchParams.get("query") && (
+        <p>No movies found. Please try a different search.</p>
+      )}
+      {movies.length > 0 && (
+        <Pagination
+          page={page}
+          pageInfo={pageInfo}
+          onClickNext={handleGoNextPage}
+          onClickPrev={handleGoPrevPage}
+        />
+      )}
       {movies.length > 0 && <MovieList movies={movies} />}
       {movies.length > 0 && (
         <Pagination

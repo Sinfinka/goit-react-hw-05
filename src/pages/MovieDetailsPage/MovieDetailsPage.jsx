@@ -12,6 +12,7 @@ import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import css from "./MovieDetailsPage.module.css";
 import clsx from "clsx";
 import Loader from "../../components/Loader/Loader";
+import { IoMdArrowRoundBack } from "react-icons/io";
 
 const buildLinkClass = ({ isActive }) => {
   return clsx(css.link, isActive && css.isActive);
@@ -50,19 +51,24 @@ export default function MovieDetailsPage() {
     <div>
       {isLoading && <Loader />}
       {error && <ErrorMessage />}
-      <Link to={backLinkRef.current}>Go back</Link>
-      <div>
+      <Link to={backLinkRef.current} className={css.goBackLink}>
+        <IoMdArrowRoundBack className={css.arrow} />
+        Go back
+      </Link>
+      <div className={css.wrapper}>
         <img
           src={createImgURL(movie?.poster_path)}
           alt={`${movie?.title} poster`}
         />
-        <h1>{movie?.title}</h1>
-        <p>{movie?.overview}</p>
-        <p>Rating: {movie?.vote_average}</p>
-        <p>Release: {movie?.release_date}</p>
+        <div className={css.description}>
+          <h1 className={css.header}>{movie?.title}</h1>
+          <p>{movie?.overview}</p>
+          <p>Rating: {movie?.vote_average}</p>
+          <p>Release: {movie?.release_date}</p>
+        </div>
       </div>
 
-      <nav>
+      <nav className={css.navigation}>
         <NavLink to="cast" className={buildLinkClass}>
           Cast
         </NavLink>

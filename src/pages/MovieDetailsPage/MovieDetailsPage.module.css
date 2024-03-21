@@ -1,7 +1,34 @@
 .link {
-  color: blue;
+  font-size: 28px;
+  padding: 14px;
 }
 
 .isActive {
-  color: brown;
+  color: var(--blue);
+  text-decoration: underline;
+}
+
+.goBackLink {
+  font-size: 28px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 28px;
+  padding-bottom: 28px;
+}
+
+.wrapper {
+  display: flex;
+  padding-bottom: 28px;
+}
+.description {
+  padding: 20px;
+}
+
+.header {
+  margin: 0;
+}
+
+.navigation {
+  padding-bottom: 36px;
 }

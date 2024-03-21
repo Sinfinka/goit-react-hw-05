@@ -4,6 +4,7 @@ import { fetchMovieCast } from "../../movies-api";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import { createImgURL } from "../../misc";
 import Loader from "../Loader/Loader";
+import css from "./MovieCast.module.css";
 
 function MovieCast() {
   const [cast, setCast] = useState([]);
@@ -28,16 +29,14 @@ function MovieCast() {
     fetchedData();
   }, [movieId]);
 
-  console.log("cast", cast);
-
   return (
     <div>
       {isLoading && <Loader />}
       {error && <ErrorMessage />}
 
-      <ul>
+      <ul className={css.list}>
         {cast.map((actor) => (
-          <li key={actor.id}>
+          <li key={actor.id} className={css.item}>
             <div>
               {actor.profile_path && (
                 <img src={createImgURL(actor.profile_path)} alt={actor.name} />

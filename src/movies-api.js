@@ -50,7 +50,6 @@ export async function fetchMovieReviews(movieId) {
 
 export async function fetchTrendData() {
   const response = await axios.get("trending/movie/day");
-  console.log(response.data);
 
   return response.data;
 }

@@ -1,7 +1,27 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.nav {
+  display: flex;
+  gap: 16px;
+}
+
+.logo {
+  font-size: 18px;
+  font-weight: 600;
+  transition: color 150ms ease-in-out;
+}
+
 .link {
-  color: rgb(0, 0, 0);
+  color: var(--light-choko);
+  font-size: 22px;
 }
 
 .active {
-  color: rgb(255, 0, 0);
+  color: var(--blue);
+  text-decoration: underline;
 }

@@ -4,8 +4,15 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: var(--blue);
+  background-color: var(--choko);
+
+  --choko: #1a110c;
+  --light-choko: #a3948c;
+  --blue: rgba(68, 236, 255, 0.903);
+  --darck-blue: rgb(0, 131, 145);
+  --darck-blue-opas: rgba(0, 131, 145, 0.505);
+  --black: #000000;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -15,11 +22,16 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: var(--light-choko);
   text-decoration: inherit;
+  transition: all 150ms ease-in-out;
 }
-a:hover {
-  color: #535bf2;
+a:hover,
+a:focus {
+  text-shadow: 1px 1px var(--darck-blue);
+  scale: 1.1;
+
+  /* color: var(--darck-blue); */
 }
 
 body {
@@ -42,27 +54,24 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--light-choko);
   cursor: pointer;
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: var(--blue);
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+ul {
+  padding: 0;
+  list-style: none;
 }

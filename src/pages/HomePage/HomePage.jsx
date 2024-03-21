@@ -28,6 +28,7 @@ const HomePage = () => {
 
   return (
     <div>
+      <h1>Today&apos;s most popular movies.</h1>
       {loading && <Loader />}
       {error && <ErrorMessage />}
       {data && <MovieList movies={data} />}

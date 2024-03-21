@@ -1,6 +1,7 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import clsx from "clsx";
 import css from "./Navigation.module.css";
+import { SiKinopoisk } from "react-icons/si";
 
 const addActiveClass = ({ isActive }) => {
   return clsx(css.link, isActive && css.active);
@@ -8,8 +9,13 @@ const addActiveClass = ({ isActive }) => {
 
 const Navigation = () => {
   return (
-    <header>
-      <nav>
+    <header className={css.header}>
+      <div>
+        <Link to="/" className={css.logo}>
+          CINEMA <SiKinopoisk />
+        </Link>
+      </div>
+      <nav className={css.nav}>
         <NavLink className={addActiveClass} to="/">
           Home
         </NavLink>

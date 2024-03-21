@@ -1,0 +1,17 @@
+.list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.listItem {
+  border: 1px solid var(--darck-blue);
+  border-radius: 8px;
+  box-shadow: 4px 4px var(--darck-blue-opas);
+  background-color: var(--black);
+  transition: all 0.3s ease;
+}
+
+.listItem:hover {
+  scale: 0.95;
+}
