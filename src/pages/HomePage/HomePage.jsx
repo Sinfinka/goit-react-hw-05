@@ -25,7 +25,7 @@ const HomePage = () => {
     }
     getTrendMovie();
   }, []);
-  console.log("data", data);
+
   return (
     <div>
       {loading && <Loader />}
