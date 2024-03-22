@@ -3,7 +3,7 @@ import { fetchData } from "../../movies-api";
 import SearchBar from "../../components/SearchBar/Search.Bar";
 import MovieList from "../../components/MovieList/MovieList";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
-import Pagination from "./../../components/Pagination/Pagination";
+import Pagination from "../../components/Pagination/Pagination";
 import { useSearchParams } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
 // import css from "./MoviesPage.module.css";
